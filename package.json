@@ -1,0 +1,15 @@
+{
+  "name": "asciinema2gif",
+  "version": "1.0.0",
+  "description": "magical asciicinema2gif tool",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/jfmherokiller/asciinema2gif.git",
+    "type": "git"
+  },
+  "author": "noah the goodra <peterpan0413@live.com>",
+  "license": "MIT",
+  "dependencies": {
+    "phantomjs-prebuilt": "^2.1.13"
+  }
+}

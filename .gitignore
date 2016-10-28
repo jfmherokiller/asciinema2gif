@@ -48,7 +48,7 @@ fabric.properties
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
 .idea/*
-
+testing/*
 
 ### OSX ###
 *.DS_Store
@@ -120,3 +120,4 @@ jspm_packages
 
 # Output of 'npm pack'
 *.tgz
+typings/*
