@@ -10,8 +10,9 @@
   "author": "noah the goodra <peterpan0413@live.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.0",
     "babel-eslint": "^7.1.0",
-    "phantom": "^3.0.2",
     "phantomjs-prebuilt": "^2.1.13",
     "shelljs": "^0.7.5",
     "valid-url": "^1.0.9",
