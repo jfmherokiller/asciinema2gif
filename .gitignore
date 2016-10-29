@@ -49,7 +49,8 @@ fabric.properties
 
 .idea/*
 testing/*
-
+*.js
+*.map
 ### OSX ###
 *.DS_Store
 .AppleDouble
