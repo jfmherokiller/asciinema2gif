@@ -1,0 +1,12 @@
+{
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922",
+    "node": "registry:dt/node#6.0.0+20161019125345",
+    "phantomjs": "registry:dt/phantomjs#1.9.0+20161012132446",
+    "shelljs": "registry:dt/shelljs#0.0.0+20161003183410"
+  },
+  "dependencies": {
+    "valid-url": "registry:npm/valid-url#1.5.0+20160812194514",
+    "yargs": "registry:npm/yargs#5.0.0+20160907000723"
+  }
+}

@@ -9,7 +9,7 @@
   "rules": {
     "brace-style": [2, "1tbs", {"allowSingleLine": false}],
     "indent": [2, 2],
-    "new-cap": false,
+    "new-cap":"off",
     "no-constant-condition": 0,
     "no-extra-strict": 0,
     "no-process-exit": 0,

@@ -10,6 +10,14 @@
   "author": "noah the goodra <peterpan0413@live.com>",
   "license": "MIT",
   "dependencies": {
-    "phantomjs-prebuilt": "^2.1.13"
+    "babel-eslint": "^7.1.0",
+    "phantom": "^3.0.2",
+    "phantomjs-prebuilt": "^2.1.13",
+    "shelljs": "^0.7.5",
+    "valid-url": "^1.0.9",
+    "yargs": "^6.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1"
   }
 }
