@@ -2,9 +2,18 @@
 // Released into the Public Domain by tav <tav@espians.com>
 
 /*global phantom, $, callPhantom*/
+declare var callPhantom:any;
+interface Webpage2 extends WebPage
+{
+  create()
+}
+interface Element2 extends Element
+{
+  style:any
+}
 
 var system = require('system') as System;
-var webpage = require('webpage') as WebPage;
+var webpage = require('webpage') as Webpage2;
 
 var argv;
 var dims;
@@ -126,7 +135,7 @@ function beginstage2() {
                   var prev = "";
                   var sameCount = 0;
                   setTimeout(function checkProgress() {
-                    var width = $('.gutter')[0].children[0].style.width;
+                    var width = (($('.gutter')[0].children[0]) as Element2).style.width;
                     if (width === prev) {
                       sameCount += 1;
                       if (sameCount === 20) {

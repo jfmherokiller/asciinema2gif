@@ -12,11 +12,18 @@
   "dependencies": {
     "phantomjs-prebuilt": "^2.1.13",
     "shelljs": "^0.7.5",
+    "typescript": "^2.0.6",
     "valid-url": "^1.0.9",
     "yargs": "^6.3.0"
   },
   "devDependencies": {
-    "eslint": "^3.8.1",
-    "babel-eslint": "^7.1.0"
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.8.1"
+  },
+  "bin": {
+    "asciicinema2gif": "index.js"
+  },
+  "scripts": {
+    "postinstall": "tsc"
   }
 }
