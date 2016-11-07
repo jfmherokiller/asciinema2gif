@@ -1,16 +1,9 @@
-///<reference path="typings/index.d.ts"/>
+///<reference path="../typings/index.d.ts"/>
+///<reference path="./rendering.d.ts"/>
 // Released into the Public Domain by tav <tav@espians.com>
 
 /*global phantom, $, callPhantom*/
-declare var callPhantom:any;
-interface Webpage2 extends WebPage
-{
-  create()
-}
-interface Element2 extends Element
-{
-  style:any
-}
+
 
 var system = require('system') as System;
 var webpage = require('webpage') as Webpage2;

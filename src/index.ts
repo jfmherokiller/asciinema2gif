@@ -2,13 +2,11 @@
  * Created by jfmmeyers on 10/28/16.
  */
 
-import * as shelljs from "shelljs"
-import {mkdtemp} from "fs";
+import * as shelljs from "shelljs";
 import {mkdtempSync} from "fs";
-import * as yargs from "yargs"
+import * as yargs from "yargs";
 import {isWebUri} from "valid-url";
-import {rmdirSync} from "fs";
-import {ExecOptions} from "shelljs";
+import {JsonCode} from "./jsonFileStuff";
 let depencyarray = [['convert', 'imagemagick'], ['gifsicle', 'gifsicle']];
 let oldworkdir = process.cwd();
 let asciinema_api = 'https://asciinema.org/api/asciicasts/';
@@ -21,7 +19,7 @@ for (let dep = 0; dep < depencyarray.length; dep++) {
     shelljs.exit(1);
   }
 }
-interface megaargs extends yargs.Argv {
+export interface megaargs extends yargs.Argv {
   size: number
   theme: string
   speed: number
@@ -30,9 +28,10 @@ interface megaargs extends yargs.Argv {
 
 let myargs = yargs.alias({'size': 's', 'speed': 'p', 'theme': 't', 'output': 'o', 'help': 'h'})
     .strict()
-    .usage("Usage: $0 [options] \<asciinema_id|asciinema_api_url>")
+    .usage("Usage: $0 [options] \<asciinema_id|asciinema_api_url|jsonfile.json>")
     .choices('size', ['small', 'medium', 'big'])
     .describe('size', "")
+    .default('size', 'small')
     .choices('theme', ['asciinema', 'tango', 'solarized-dark', 'solarized-light', 'monokai'])
     .default('theme', 'tango')
     .describe('theme', "")
@@ -42,16 +41,19 @@ let myargs = yargs.alias({'size': 's', 'speed': 'p', 'theme': 't', 'output': 'o'
     .demand(1)
     .help('help')
     .argv as megaargs;
-//let newtempdir = mkdtempSync("asciinema2gif");
 let IdOrPageOrJsonFile = myargs._[0];
-if (!isWebUri(IdOrPageOrJsonFile)) {
+
+
+if (IdOrPageOrJsonFile.indexOf(".json") !== -1) {
+  JsonCode(IdOrPageOrJsonFile, myargs, oldworkdir);
+
+} else if (!isWebUri(IdOrPageOrJsonFile)) {
   let theurl = checkAndAppendArgs();
   checkUrlExists(theurl, function (test) {
-    if(test)
-    {
+    if (test) {
       let newtempdir = mkdtempSync("asciinema2gif.");
       shelljs.cd(newtempdir);
-      shelljs.exec(`phantomjs --ssl-protocol=any "${__dirname}/render.js" "${checkAndAppendArgs()}"`);
+      shelljs.exec(`phantomjs --ssl-protocol=any "${__dirname}/../rendering/renderIdOrUrl.js" "${checkAndAppendArgs()}"`);
       shelljs.echo(">> Generating GIF…");
       shelljs.exec(`convert -delay 5 -loop 0 frames/*.png gif:- | gifsicle --colors=256 --delay=6 --optimize=3 --output='asciicast.gif'`);
       shelljs.mv("asciicast.gif", myargs.output);
